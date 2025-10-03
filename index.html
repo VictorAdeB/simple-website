@@ -1,3 +1,7 @@
+<?php
+// Get the instance's private IP dynamically
+$instance_ip = trim(shell_exec("curl -s http://169.254.169.254/latest/meta-data/local-ipv4"));
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,20 +10,28 @@
 </head>
 <body style="margin:0; font-family: Arial, sans-serif; height:100vh; display:grid; grid-template-rows: 80px 60px 1fr 50px; background: linear-gradient(135deg, #6a11cb, #2575fc);">
 
+  <!-- Header -->
   <header style="display:flex; align-items:center; justify-content:center; color:white; font-size:24px; font-weight:bold; backdrop-filter: blur(10px); background: rgba(255,255,255,0.1); box-shadow: 0 4px 30px rgba(0,0,0,0.1); border-bottom:1px solid rgba(255,255,255,0.3);">
     Alt School Second Semester Exam
   </header>
 
+  <!-- Navigation -->
+  <nav style="display:flex; justify-content:center; align-items:center; gap:20px; backdrop-filter: blur(10px); background: rgba(255,255,255,0.15); border-bottom:1px solid rgba(255,255,255,0.3);">
+    <a href="#" style="color:white; text-decoration:none; font-weight:bold;">Home</a>
+    <a href="#" style="color:white; text-decoration:none; font-weight:bold;">About</a>
+    <a href="#" style="color:white; text-decoration:none; font-weight:bold;">Contact</a>
+  </nav>
+
+  <!-- Content -->
   <main style="display:flex; align-items:center; justify-content:center; flex-direction:column; backdrop-filter: blur(20px); background: rgba(255,255,255,0.1); margin:20px; border-radius:20px; box-shadow: 0 8px 30px rgba(0,0,0,0.2); text-align:center; color:white; padding:30px;">
-    <h1 style="margin:0; letter-spacing:2px; text-shadow: 0 4px 10px rgba(0,0,0,0.3);">Hello my name is Victor</h1>
-    <p style="padding-top: 5px; font-size:20px; margin: auto; opacity:0.9;">This page is served from EC2 instance: <strong>{{ instance_ip }}</strong></p>
+    <h1 style="font-size:70px; margin:0; letter-spacing:2px; text-shadow: 0 4px 10px rgba(0,0,0,0.3);">Hello my name is Victor</h1>
+    <p style="font-size:20px; opacity:0.9;">This page is served from EC2 instance: <strong><?php echo $instance_ip; ?></strong></p>
   </main>
 
-  <footer style="display:flex; margin-top: 80px; align-items:center; justify-content:center; color:white; font-size:14px; background: rgba(255,255,255,0.1); border-top:1px solid rgba(255,255,255,0.3);">
-    <p style="margin: auto;">© 2025 My Website</p>
+  <!-- Footer -->
+  <footer style="display:flex; align-items:center; justify-content:center; color:white; font-size:14px; backdrop-filter: blur(10px); background: rgba(255,255,255,0.1); border-top:1px solid rgba(255,255,255,0.3);">
+    © 2025 My Website
   </footer>
 
 </body>
 </html>
-
-
