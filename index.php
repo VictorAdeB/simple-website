@@ -25,21 +25,14 @@ $instance_ip = trim(shell_exec("curl -s http://169.254.169.254/latest/meta-data/
   <!-- Content -->
   <main style="display:flex; align-items:center; justify-content:center; flex-direction:column; backdrop-filter: blur(20px); background: rgba(255,255,255,0.1); margin:20px; border-radius:20px; box-shadow: 0 8px 30px rgba(0,0,0,0.2); text-align:center; color:white; padding:30px;">
     <h1 style="font-size:70px; margin:0; letter-spacing:2px; text-shadow: 0 4px 10px rgba(0,0,0,0.3);">Hello my name is Victor</h1>
-    <p style="font-size:20px; opacity:0.9;">Hello from S3 Static Hosting!</strong></p>
-    <p>This page is served directly from an Amazon S3 bucket.</p>
-  <p>Your public IP (client): <span id="ip">loading...</span></p>
+    <p style="font-size:20px; opacity:0.9;">This page is served from EC2 instance: <strong><?php echo $instance_ip; ?></strong></p>
   </main>
 
   <!-- Footer -->
   <footer style="display:flex; align-items:center; justify-content:center; color:white; font-size:14px; backdrop-filter: blur(10px); background: rgba(255,255,255,0.1); border-top:1px solid rgba(255,255,255,0.3);">
     © 2025 My Website
   </footer>
-  <script>
-    fetch('https://api.ipify.org?format=json')
-      .then(res => res.json())
-      .then(data => document.getElementById('ip').textContent = data.ip);
-  </script>
-
 
 </body>
 </html>
+
